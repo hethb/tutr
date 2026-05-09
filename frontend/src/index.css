@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c5ce7;
+  border-radius: 3px;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.speaking-ripple::before,
+.speaking-ripple::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(108, 92, 231, 0.4);
+  animation: ripple 1.5s ease-out infinite;
+}
+
+.speaking-ripple::after {
+  animation-delay: 0.5s;
+}
+
+.audio-bar {
+  display: inline-block;
+  width: 3px;
+  background: #6c5ce7;
+  border-radius: 2px;
+  animation: speaking 0.3s ease-in-out infinite alternate;
+}
+
+.audio-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+.audio-bar:nth-child(3) { animation-delay: 0.2s; height: 100%; }
+.audio-bar:nth-child(4) { animation-delay: 0.15s; height: 40%; }
+.audio-bar:nth-child(5) { animation-delay: 0.25s; height: 80%; }
+
+.glass {
+  background: rgba(35, 35, 65, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+}
+
+.glass-light {
+  background: rgba(45, 45, 80, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 92, 231, 0.1);
+}
